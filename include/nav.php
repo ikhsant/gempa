@@ -17,6 +17,8 @@
 
         <?php if($_SESSION['akses_level'] == "admin"){ ?>
         <li><a href="gempa.php"><i class="fa fa-globe"></i> Gempa</a></li>
+        <li><a href="jenis_asuransi.php"><i class="fa fa-car"></i> Jenis Asuransi</a></li>
+        <li><a href="asuransi.php"><i class="fa fa-car"></i> Asuransi</a></li>
         <li><a href="user.php"><i class="fa fa-users"></i> User</a></li>
         <?php  } ?>
 

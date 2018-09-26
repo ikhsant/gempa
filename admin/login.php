@@ -53,6 +53,7 @@ $setting = mysqli_fetch_assoc(mysqli_query($conn,'SELECT * FROM setting LIMIT 1'
      <input class="form-control" type="password" name="pass" placeholder="Masukan Password" required>
    </div>
      <button class="btn btn-primary" type="submit" name="submit" ><i class="fa fa-sign-in"></i> Login</button>
+     <a href="../index.php" class="btn btn-danger" ><i class="fa fa-home"></i> Home</a>
  </form>
 </body>
 </html>

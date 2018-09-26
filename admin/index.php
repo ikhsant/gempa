@@ -40,7 +40,7 @@ $gempa = mysqli_query($conn,"SELECT * FROM gempa ORDER BY id_gempa DESC");
                     <i class="fa fa-globe fa-5x"></i>
                 </div>
                 <div class="col-xs-9 text-right">
-                    <span style="font-size: 50px"><?php echo mysqli_num_rows($gempa) ?></span>
+                    <span style="font-size: 40px"><?php echo mysqli_num_rows($gempa) ?></span>
                     <div>Gempa</div>
                 </div>
             </div>
@@ -87,6 +87,39 @@ $gempa = mysqli_query($conn,"SELECT * FROM gempa ORDER BY id_gempa DESC");
 </div>
 
 
+<div class="col-lg-3 col-md-6">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-money fa-5x"></i>
+                </div>
+                <div class="col-xs-9 text-right">
+                    <span style="font-size: 20px"><b>
+                        <?php 
+                        $asuransi = mysqli_fetch_assoc(mysqli_query($conn,"
+                            SELECT asuransi.*, SUM(jenis_asuransi.biaya) as biaya
+                            FROM asuransi
+                            JOIN jenis_asuransi
+                            ON asuransi.jenis_asuransi = jenis_asuransi.id_jenis_asuransi
+                            "));
+                        echo 'Rp. '.$asuransi['biaya'];
+                        ?>
+                          </b>  
+                        </span>
+                    <div>Total Asuransi</div>
+                </div>
+            </div>
+        </div>
+        <a href="asuransi.php">
+            <div class="panel-footer">
+                <span class="pull-left">View Details</span>
+                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                <div class="clearfix"></div>
+            </div>
+        </a>
+    </div>
+</div>
 
 <div class="col-md-6">
 
@@ -123,16 +156,16 @@ $thn2017 = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM gempa WHERE YEAR(w
                 label: '# Gempa',
                 data: [<?php echo $thn2008 ?>, <?php echo $thn2009 ?>, <?php echo $thn2010 ?>, <?php echo $thn2011 ?>,<?php echo $thn2012 ?>, <?php echo $thn2013 ?>, <?php echo $thn2014 ?>, <?php echo $thn2015 ?>, <?php echo $thn2016 ?>, <?php echo $thn2017 ?>],
                 backgroundColor: [
-                'rgba(0, 255, 0)',
-                'rgba(0, 255, 0)',
-                'rgba(0, 255, 0)',
-                'rgba(0, 255, 0)',
-                'rgba(0, 255, 0)',
-                'rgba(0, 255, 0)',
-                'rgba(0, 255, 0)',
-                'rgba(0, 255, 0)',
-                'rgba(0, 255, 0)',
-                'rgba(0, 255, 0)'
+                'rgba(0, 50, 0)',
+                'rgba(0, 50, 0)',
+                'rgba(0, 50, 0)',
+                'rgba(0, 50, 0)',
+                'rgba(0, 50, 0)',
+                'rgba(0, 50, 0)',
+                'rgba(0, 50, 0)',
+                'rgba(0, 50, 0)',
+                'rgba(0, 50, 0)',
+                'rgba(0, 50, 0)'
 
                 ]
             }]
