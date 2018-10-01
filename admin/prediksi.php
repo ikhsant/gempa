@@ -4,27 +4,70 @@ include '../include/header.php';
 ?>
 
 <div class="alert alert-info">
-	<p>Prediksi Gempa dengan distribusi Exponensial</p>
+	<div class="row">
+		<div class="col-md-2">
+			<img src="../uploads/images/rumus.jpg" height="150px">
+		</div>
+		<div class="col-md-2">
+			<img src="../uploads/images/rumus2.png" height="150px">
+		</div>
+		<div class="col-md-6">
+			<p><b>Prediksi Gempa dengan distribusi Exponensial</b></p>
+			<p>Fungsi eksponensial adalah salah satu fungsi yang paling penting dalam matematika. Biasanya, fungsi ini ditulis dengan notasi exp(x) atau ex, di mana e adalah basis logaritma natural yang kira-kira sama dengan 2.71828183.</p>
+		</div>
+		
+	</div>
 	<!-- <p><b>Rumus:</b></p> -->
 </div>
 
-<div class="panel panel-default">
-	<div class="panel-heading">
-		Distribusi Exponensial
-	</div>
-	<div class="panel-body">
-		<?php 
-		$n = 1430.95614;
-		$x = 1719;
-		$b = 0.78195;
-		$e = 2.71828;
-		$t = 430;
-
-		$hasil = ($b/$n) * (($t / $n)^($b-1)) * ($e ^ -(($t/n)^$b) ) ;
+<div class="row">
+<div class="col-lg-3 col-md-6">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-calendar fa-5x"></i>
+                </div>
+                <div class="col-xs-9 text-right">
+                    <span style="font-size: 20px"><b>
+                        <?php 
+		$query = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM gempa ORDER BY id_gempa"));
+		$hasil = date('d F Y', strtotime($query['waktu'])) ;
 		echo $hasil;
 
 		 ?>
-	</div>
+                          </b>  
+                        </span>
+                    <div>Gempa Terakhir</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-3 col-md-6">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-magic fa-5x"></i>
+                </div>
+                <div class="col-xs-9 text-right">
+                    <span style="font-size: 20px"><b>
+                        <?php 
+		$query = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM gempa ORDER BY id_gempa"));
+		$waktu = date('d F Y', strtotime($query['waktu']. '+ 2 days')) ;
+		echo $waktu;
+
+		 ?>
+                          </b>  
+                        </span>
+                    <div>Prediksi Gempa</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 
 <?php  
